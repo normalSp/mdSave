@@ -28,6 +28,7 @@ public User save(User user){
 @CacheEvict(value = "userCache",key = "#p0")
 //@CacheEvict(value = "userCache",key = "#root.args[0]") 
 //@CacheEvict(value = "userCache",key = "#id")
+//@CacheEvict(value = "setmeal", allEntries = true) 删除某个分类下的全部
 @DeleteMapping("/{id}")
 public void delete(@PathVariable Long id){
     userService.removeById(id);
@@ -55,3 +56,5 @@ public User getById(@PathVariable Long id){
 # 2. Spring Cache 使用方法
 
 ![image-20240326171411112](https://raw.githubusercontent.com/normalSp/imgSave/master/image-20240326171411112.png)
+
+记得在控制了返回的实体类上实现接口 Serializable
